@@ -1,6 +1,4 @@
-package com.example.judgev2.workshop.entity;
-
-import org.springframework.boot.context.properties.NestedConfigurationProperty;
+package com.example.judgev2.workshop.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package com.example.judgev2.workshop.entity;
+package com.example.judgev2.workshop.model.entity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

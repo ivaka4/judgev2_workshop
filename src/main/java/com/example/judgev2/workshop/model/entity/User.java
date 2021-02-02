@@ -1,6 +1,5 @@
-package com.example.judgev2.workshop.entity;
+package com.example.judgev2.workshop.model.entity;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,7 +23,7 @@ public class User extends BaseEntity {
     private String password;
     @Column(name = "email", nullable = false, unique = true)
     private String email;
-    @Column(name = "git")
+    @Column(name = "git", nullable = false)
     private String git;
 
     @ManyToOne

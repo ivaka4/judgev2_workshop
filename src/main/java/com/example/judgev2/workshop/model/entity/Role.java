@@ -1,7 +1,6 @@
-package com.example.judgev2.workshop.entity;
+package com.example.judgev2.workshop.model.entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -9,9 +8,12 @@ import javax.persistence.*;
 @Table(name = "roles")
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Role extends BaseEntity {
 
     @Column
     @Enumerated(EnumType.STRING)
     private RoleNameEnum name;
+
 }
