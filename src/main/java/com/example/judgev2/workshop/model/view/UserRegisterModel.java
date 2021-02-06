@@ -16,7 +16,7 @@ public class UserRegisterModel {
     @Length(min = 2, message = "Username length must me minimum two characters")
     @NotNull
     private String username;
-    @Length(min = 3, message = "Username length must me minimum three characters")
+    @Length(min = 3, message = "Password length must me minimum three characters")
     @NotNull
     private String password;
     private String confirmPassword;

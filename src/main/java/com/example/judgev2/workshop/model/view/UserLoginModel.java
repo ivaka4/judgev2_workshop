@@ -11,6 +11,6 @@ import org.hibernate.validator.constraints.Length;
 public class UserLoginModel {
     @Length(min = 2, message = "Username length must me minimum two characters")
     private String username;
-    @Length(min = 3, message = "Username length must me minimum three characters")
+    @Length(min = 3, message = "Password length must me minimum three characters")
     private String password;
 }
