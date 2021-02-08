@@ -25,7 +25,6 @@ public class User extends BaseEntity {
     private String email;
     @Column(name = "git", nullable = false)
     private String git;
-
     @ManyToOne
     private Role role;
 }

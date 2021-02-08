@@ -1,6 +1,10 @@
 package com.example.judgev2.workshop.service;
 
+import com.example.judgev2.workshop.model.entity.RoleNameEnum;
 import com.example.judgev2.workshop.model.service.UserServiceModel;
+import com.example.judgev2.workshop.model.view.UserViewModel;
+
+import java.util.List;
 
 public interface UserService {
 
@@ -11,4 +15,8 @@ public interface UserService {
     void login(UserServiceModel userServiceModel);
 
     void logout();
+
+    List<UserViewModel> getAllUsers();
+
+    void addRole(String username, RoleNameEnum role);
 }

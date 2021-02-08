@@ -3,12 +3,17 @@ package com.example.judgev2.workshop.service.impl;
 import com.example.judgev2.workshop.model.entity.RoleNameEnum;
 import com.example.judgev2.workshop.model.entity.User;
 import com.example.judgev2.workshop.model.service.UserServiceModel;
+import com.example.judgev2.workshop.model.view.UserViewModel;
 import com.example.judgev2.workshop.repository.UserRepository;
 import com.example.judgev2.workshop.security.CurrentUser;
 import com.example.judgev2.workshop.service.RoleService;
 import com.example.judgev2.workshop.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -16,6 +21,7 @@ public class UserServiceImpl implements UserService {
     private final ModelMapper modelMapper;
     private final RoleService roleService;
     private final CurrentUser currentUser;
+
 
     public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, RoleService roleService, CurrentUser currentUser) {
         this.userRepository = userRepository;
@@ -56,5 +62,20 @@ public class UserServiceImpl implements UserService {
         currentUser.setId(null);
         currentUser.setUsername(null);
         currentUser.setRole(null);
+    }
+
+    @Override
+    public List<UserViewModel> getAllUsers() {
+        return this.modelMapper.map(this.userRepository.findAll(), new TypeToken<List<UserViewModel>>() {
+        }.getType());
+    }
+
+    @Override
+    public void addRole(String username, RoleNameEnum role) {
+        User user = this.userRepository.findByUsername(username);
+        if (user.getRole().getName() != role) {
+            user.setRole(this.roleService.findRole(role));
+            this.userRepository.saveAndFlush(user);
+        }
     }
 }
