@@ -1,5 +1,6 @@
 package com.example.judgev2.workshop.model.view;
 
+import com.example.judgev2.workshop.util.Unique;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,6 +26,7 @@ public class UserRegisterModel {
     private String email;
     @Pattern(regexp = "https:\\/\\/github\\.com\\/.+", message = "Enter valid git address")
     @NotNull
+    @Unique
     private String git;
 
 }

@@ -76,7 +76,6 @@ public class UsersController extends BaseController {
     public ModelAndView registerConfirm(@Valid @ModelAttribute UserRegisterModel userRegisterModel,
                                         BindingResult bindingResult,
                                         RedirectAttributes redirectAttributes) {
-        ModelAndView modelAndView = new ModelAndView();
         if (bindingResult.hasErrors() || !userRegisterModel.getPassword().equals(userRegisterModel.getConfirmPassword())) {
             redirectAttributes.addFlashAttribute("userRegisterModel", userRegisterModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userRegisterModel", bindingResult);

@@ -2,19 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Judge v2</title>
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/style.css">
-    <script src="/static/js/jquery-3.3.1.min.js"></script>
-    <script src="/static/js/bootstrap.min.js"></script>
-
-</head>
+<th:block th:include="~{fragments/head}"></th:block>
 
 <body>
 <div class="container">
@@ -111,7 +99,7 @@
         <div class="tm-col tm-col-small justify-content-center text-center">
             <div class="bg-white tm-block">
                 <h2 class="tm-block-title">Download</h2>
-                <img src="/static/img/homework.png" alt="Homework pic" width="100%">
+                <img src="/img/homework.png" alt="Homework pic" width="100%">
                 <div class="custom-file mt-3 mb-3">
                     <input id="fileInput" type="file" style="display:none;"/>
                     <a href="user github address + /archive/master.zip">

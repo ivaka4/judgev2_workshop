@@ -7,6 +7,8 @@ import com.example.judgev2.workshop.service.ExerciseService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ExerciseServiceImpl implements ExerciseService {
     private final ExerciseRepository exerciseRepository;
@@ -21,5 +23,15 @@ public class ExerciseServiceImpl implements ExerciseService {
     public void addExercise(ExercisesAddModel exercisesAddModel) {
         Exercise exercise = this.modelMapper.map(exercisesAddModel, Exercise.class);
         this.exerciseRepository.saveAndFlush(exercise);
+    }
+
+    @Override
+    public List<String> getAllExercises() {
+        return this.exerciseRepository.findAllExercises();
+    }
+
+    @Override
+    public Exercise findByName(String name) {
+        return this.exerciseRepository.findByName(name);
     }
 }

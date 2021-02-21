@@ -16,4 +16,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<String> findAllUsernames();
 
     User findByUsername(String username);
+
+    User findUserByGit(String gitAddress);
+
+    boolean findByGit(String gitAddress);
+
+
 }

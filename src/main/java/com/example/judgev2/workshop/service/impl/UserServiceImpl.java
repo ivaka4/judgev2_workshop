@@ -10,6 +10,7 @@ import com.example.judgev2.workshop.service.RoleService;
 import com.example.judgev2.workshop.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class UserServiceImpl implements UserService {
     private final CurrentUser currentUser;
 
 
+    @Autowired
     public UserServiceImpl(UserRepository userRepository, ModelMapper modelMapper, RoleService roleService, CurrentUser currentUser) {
         this.userRepository = userRepository;
         this.modelMapper = modelMapper;
@@ -33,6 +35,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void registerUser(UserServiceModel userServiceModel) {
         User user = modelMapper.map(userServiceModel, User.class);
+
         if (userRepository.count() == 0) {
             user.setRole(roleService.findRole(RoleNameEnum.ADMIN));
         } else {
@@ -78,4 +81,16 @@ public class UserServiceImpl implements UserService {
             this.userRepository.saveAndFlush(user);
         }
     }
+
+    @Override
+    public User findByGitAddress(String address) {
+        return this.userRepository.findUserByGit(address);
+    }
+
+    @Override
+    public boolean gitExist(String gitAddress) {
+        return userRepository.findUserByGit(gitAddress) == null;
+    }
+//
+
 }
